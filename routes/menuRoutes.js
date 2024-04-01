@@ -5,7 +5,7 @@ const menuModel = require("../models/menu")
 router.get("/", async (req,res)=>{
     try {
         const data =await menuModel.find()
-        console.log("Data found \n",data)
+        console.log("Data found ")
         res.status(200).json({foundData:data})
     } catch (error) {
        console.log(error) 

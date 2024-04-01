@@ -1,11 +1,10 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const personRoutes = require("./routes/personRoutes")
-const menuRoutes = require("./routes/menuRoutes")
 require("dotenv").config()
-const mongoUrl = process.env.db_url
-// const mongoUrl = "mongodb://127.0.0.1:27017"
+
+//const mongoUrl = process.env.db_url
+const mongoUrl = "mongodb://127.0.0.1:27017"
 
 mongoose
   .connect(mongoUrl)
@@ -17,6 +16,13 @@ mongoose
   });
 
 app.use(express.json());
+
+app.get("/",(req,res)=>{
+  res.send("welcome to our server \n ")
+})
+
+const personRoutes = require("./routes/personRoutes")
+const menuRoutes = require("./routes/menuRoutes")
 
 app.use("/person",personRoutes)
 app.use("/menu",menuRoutes)
